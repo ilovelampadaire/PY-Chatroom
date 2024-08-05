@@ -1,7 +1,13 @@
-import os
-import main
+"""Module that checks if the handler text file exists or not from the check() function."""
 
-def check():
+import os
+
+def check(exists_callback, not_found_callback):
+    """
+        Checks if the handling text file exists and uses function callbacks to send the output.
+        exists_callback: Function that gets ran when the file exists.
+        not_found_callback: Function that gets ran when the file doesn't exist.
+    """
 # Get the current working directory (root of the repository)
     root_directory = os.getcwd()
 
@@ -17,7 +23,7 @@ def check():
 # Check if the file exists
     if os.path.exists(file_path):
         print('File exists outside of lib.')
-        main.exists()
+        exists_callback()
     else:
         print('File does not exist outside of lib.')
-        main.handling_txt_not_found()
+        not_found_callback()
